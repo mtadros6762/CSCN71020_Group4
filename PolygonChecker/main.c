@@ -1,9 +1,14 @@
 #define _CRT_SECURE_NO_WARNINGS
+#define TRIANGLEMAX 3
+#define RECTANGLEMAX 4
 #include <stdio.h>
 #include <stdbool.h>
 
 #include "main.h"
 #include "triangleSolver.h"
+#include "inputValidation.h"
+
+//Group 4: madisont, karls, adilf, manyac
 
 int side = 0;
 
@@ -63,9 +68,10 @@ int printShapeMenu() {
 
 int* getTriangleSides(int* triangleSides) {
 	printf("Enter the three sides of the triangle: ");
-	for (int i = 0; i < 3; i++)
+	for (int index = 0; index < TRIANGLEMAX; index++)
 	{
-		scanf("%d", &triangleSides[i]);
+		int* symbols_returned = scanf("%d", &triangleSides[index]);
+		inputValidation(symbols_returned, TRIANGLEMAX);
 	}
 	return triangleSides;
 }
