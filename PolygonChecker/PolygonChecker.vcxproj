@@ -142,6 +142,7 @@
     <ClCompile Include="inputValidation.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="rectangleSolver.c" />
+    <ClCompile Include="rectangleSolver_tests.c" />
     <ClCompile Include="triangleSolver.c" />
   </ItemGroup>
   <ItemGroup>

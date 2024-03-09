@@ -3,7 +3,7 @@
 /*Function to get the input for Coordinates*/
 Points* getRectanglePoints(Points* coordinates) {
 	printf_s("Enter the 4 points of the rectangle: \n");
-	for (int i = 0; i < 4; i++)
+    for (int i = 0; i < MAX_POINTS; i++)
 	{
 		scanf_s("%d %d", &coordinates[i].x, &coordinates[i].y);
 	}
@@ -13,6 +13,7 @@ Points* getRectanglePoints(Points* coordinates) {
 int calculateDistance(Points p1, Points p2) {
     return sqrt(pow((p2.x - p1.x), POWER_2) + pow((p2.y - p1.y), POWER_2));
 }
+
 /*Function to get the slope of diagonals using the slope formula*/
 float calculateSlope(Points p1, Points p2) {
     if (p2.x - p1.x != 0) {
