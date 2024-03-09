@@ -72,8 +72,8 @@ void analyzeTriangle(int side1, int side2, int side3) {
 void calculateTri_Angles(int side1, int side2, int side3, double* angle1, double* angle2, double* angle3) {
 	*angle1 = acos(((side2*side2) + (side3*side3) - (side1*side1)) / (COSDENOMINATOR * side2 * side3));
 	*angle2 = acos(((side1*side1) + (side3*side3) - (side2*side2)) / (COSDENOMINATOR * side1 * side3));
-	*angle3 = MAX_TRI_ANGLES - *angle2 - *angle1;
-	//*angle3 = acos(((side1*side1) + (side2*side2) - (side3*side3)) / (COSDENOMINATOR * side1 * side2));
+	//*angle3 = MAX_TRI_ANGLES - *angle2 - *angle1;
+	*angle3 = acos(((side1*side1) + (side2*side2) - (side3*side3)) / (COSDENOMINATOR * side1 * side2));
 }
 
 /*Function to convert angles to degrees and print*/
