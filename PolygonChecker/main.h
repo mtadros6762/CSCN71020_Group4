@@ -1,15 +1,25 @@
+#pragma once
+
+//group4 - cscn71020 - main interface
+
+//Main Library
+#ifndef MAIN_LIBRARY_H
+#define MAIN_LIBRARY_H
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdbool.h>
 #include "rectangleSolver.h"
 #include "triangleSolver.h"
 
-#pragma once
+
 void printWelcome();
 int printShapeMenu();
-int* getTriangleSides(int* triangleSides);
+char getCharInput(char message[]);
+
 /*Functions for Rectangle*/
-Points* getRectanglePoints(Points* coordinates);
-float calculateAngle(Points p1, Points p2);
-float calculateSlope(Points p1, Points p2);
-int calculateDistance(Points p1, Points p2);
+POINTS* getRectanglePoints(POINTS* coordinates);
+float calculateAngle(POINTS p1, POINTS p2); 
+float calculateSlope(POINTS p1, POINTS p2);
+int calculateDistance(POINTS p1, POINTS p2);
+
+#endif //MAIN_LIBRARY_H
