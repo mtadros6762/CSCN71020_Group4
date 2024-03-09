@@ -15,8 +15,8 @@
 
 // Testing function calculateDistance
 void testCalculateDistance() {
-    Points p1 = { 0, 0 };
-    Points p2 = { 3, 4 };
+    POINTS p1 = { 0, 0 };
+    POINTS p2 = { 3, 4 };
     int expected = 5;
     int result = calculateDistance(p1, p2);
     if (result == expected) {
@@ -29,8 +29,8 @@ void testCalculateDistance() {
 
 // Testing function CalculateSlope
 void testCalculateSlope() {
-    Points p1 = { 1, 1 };
-    Points p2 = { 4, 5 };
+    POINTS p1 = { 1, 1 };
+    POINTS p2 = { 4, 5 };
     float expected = 1.333333;
     float result = calculateSlope(p1, p2);
     if (fabs(result - expected) < 0.0001) {
@@ -43,8 +43,8 @@ void testCalculateSlope() {
 
 // Testing function CalculateAngle
 void testCalculateAngle() {
-    Points p1 = { 0, 0 };
-    Points p2 = { 1, 1 };
+    POINTS p1 = { 0, 0 };
+    POINTS p2 = { 1, 1 };
     float expected = 45.0; // degrees
     float result = calculateAngle(p1, p2);
     if (fabs(result - expected) < 0.001) {

@@ -5,13 +5,28 @@
 
 /*Function to get the input for Coordinates*/
 POINTS* getRectanglePoints(POINTS* coordinates) {
-	printf_s("Enter the 4 points of the rectangle: \n");
-    for (int i = 0; i < MAX_POINTS; i++)
-	{
-		scanf_s("%d %d", &coordinates[i].x, &coordinates[i].y);
-	}
-	return coordinates;
+    printf("Enter the 4 points of the rectangle (x y): \n");
+    for (int i = 0; i < MAX_POINTS; i++) {
+        bool validInput = false;
+        while (!validInput) {
+            printf("Enter coordinates for point %d: ", i + 1);
+            char input[100];
+            if (fgets(input, sizeof(input), stdin) != NULL) {
+                if (sscanf(input, "%d %d", &coordinates[i].x, &coordinates[i].y) == 2) {
+                    validInput = true;
+                }
+                else {
+                    printf("Invalid input. Please enter two integers separated by a space.\n");
+                }
+            }
+            else {
+                printf("Error reading input. Please try again.\n");
+            }
+        }
+    }
+    return coordinates;
 }
+
 /*Function to the distance by implementing the distance formula*/
 int calculateDistance(POINTS p1, POINTS p2) {
     return sqrt(pow((p2.x - p1.x), POWER_2) + pow((p2.y - p1.y), POWER_2));
