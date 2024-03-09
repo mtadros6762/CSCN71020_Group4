@@ -1,35 +1,38 @@
 #define _CRT_SECURE_NO_WARNINGS
-#define TRIANGLEMAX 3
-#define RECTANGLEMAX 4
+#define MAXCHAR 5
 
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h> // Added for exit()
-#include "rectangleSolver.h"
 #include "main.h"
+#include "rectangleSolver.h"
 #include "triangleSolver.h"
-#include "inputValidation.h"
 
 int main() {
     bool continueProgram = true;
     while (continueProgram) {
-        printWelcome();
+		char shapeChoice = '\0';
 
-        int shapeChoice = printShapeMenu();
+		printWelcome();
+		printShapeMenu();
+
+		shapeChoice = getCharInput("Enter number: ");
 
         switch (shapeChoice)
         {
-        case 1:
-            printf("Triangle selected.\n");
-            int triangleSides[3] = { 0, 0, 0 };
+        case '1':
+
+            printf("\nTriangle selected.\n");
+            int triangleSides[MAXSIDES] = { 0, 0, 0 };
             int* triangleSidesPtr = getTriangleSides(triangleSides);
-            char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
-            printf("%s\n", result);
+			analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
+
             break;
-        case 2:									
-            printf("Rectangle selected.\n");
+        case '2':
+
+            printf("\nRectangle selected.\n");
 			/*Dynamically allocating memory to store points for the rectangle and also defining Coordinates as a Points*/
-			Points* Coordinates = (Points*)malloc(MAX_POINTS * sizeof(Points));
+			POINTS* Coordinates = (POINTS*)malloc(MAX_POINTS * sizeof(POINTS));
 			if (Coordinates == NULL) {
 				fprintf(stderr, "Memory allocation issues\n");
 				exit(1);
@@ -86,15 +89,16 @@ int main() {
 				/*Output when FALSE*/
 				printf("Not a Valid Rectangle\n");
 			}
-			/*Deallocating the memory cause honestly I have no idea but steve said it's a good practise*/
+			/*Deallocating the memory cause honestly I have no idea but steve said it's a good practice*/
 			free(Coordinates);
-			break;
+
             break;
-        case 0:
+
+        case '0':
             continueProgram = false;
             break;
         default:
-            printf("Invalid value entered.\n");
+            printf("\nInvalid option entered.\n");
             break;
         }
     }
@@ -113,20 +117,23 @@ int printShapeMenu() {
     printf("1. Triangle\n");
     printf("2. Rectangle\n"); // Changed to include rectangle option
     printf("0. Exit\n");
-
-    int shapeChoice;
-
-    printf("Enter number: ");
-    scanf("%d", &shapeChoice);
-
-    return shapeChoice;
 }
 
-int* getTriangleSides(int* triangleSides) {
-    printf("Enter the three sides of the triangle: ");
-    for (int index = 0; index < TRIANGLEMAX; index++)
-    {
-        scanf("%d", &triangleSides[index]);
-    }
-    return triangleSides;
+/*Separate function for menu choice from user*/
+char getCharInput(char message[]) {
+	char menuInput[MAXCHAR];
+	printf("\n%s\n", message);
+	fgets(menuInput, MAXCHAR, stdin);
+	return menuInput[0];
 }
+
+//I rewrote the input function in triangleSolver.c
+
+//int* getTriangleSides(int* triangleSides) {
+//    printf("Enter the three sides of the triangle: ");
+//    for (int index = 0; index < TRIANGLEMAX; index++)
+//    {
+//		scanf("%d", &triangleSides[index]);
+//    }
+//    return triangleSides;
+//}
