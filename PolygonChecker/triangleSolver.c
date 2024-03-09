@@ -2,10 +2,15 @@
 #include <stdbool.h>
 
 #include "triangleSolver.h"
+#include "inputValidation.h"
+
+//This function analyzes sides given by user and determines if it is a triangle
+//if so it determines what type
 
 char* analyzeTriangle(int side1, int side2, int side3) {
 	char* result = "";
-	if (side1 <= 0 || side2 <= 0 || side3 <= 0) {
+	
+	if ((side1 <= 0 || side2 <= 0 || side3 <= 0)) {
 		result = "Not a triangle";
 	}
 	else if (side1 == side2 && side1 == side3) {
