@@ -1,7 +1,7 @@
 #include "main.h"
-#include"math.h"
+#include <math.h> 
 
-
+//group4 - cscn71020 - rectangle solver tests implementation
 
 // Testing function getRectanglePoints
 void testGetRectanglePoints() {

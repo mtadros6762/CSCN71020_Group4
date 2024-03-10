@@ -7,7 +7,7 @@ namespace PolygonCheckerTests
 {
 
 	//Triangle Solver Test Class
-	TEST_CLASS(TriangleSolverTests)
+	TEST_CLASS(TypeOfTriangleTests)
 	{
 	public:
 
@@ -17,7 +17,7 @@ namespace PolygonCheckerTests
 	};
 
 	//Rectangle Solver Test Class
-	TEST_CLASS(RectangleSolverTests)
+	TEST_CLASS(TriangleAnglesTests)
 	{
 	public:
 
@@ -27,7 +27,7 @@ namespace PolygonCheckerTests
 	};
 
 	//Input Validation Test Class
-	TEST_CLASS(InputValidationTests)
+	TEST_CLASS(RectangleFourPointsTests)
 	{
 	public:
 

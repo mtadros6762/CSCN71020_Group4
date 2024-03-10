@@ -4,8 +4,7 @@
 
 //group4 - cscn71020 - triangle solver implementation
 
-//This function gets each triangle side individually and stores input into an array
-//while simultaneously validating user input
+/*Function to get triangle sides input and validate input*/
 int* getTriangleSides(int* triangleSides) {
 	char* sideNames[MAXSIDES] = { "first", "second", "third" };
 
@@ -25,7 +24,7 @@ int* getTriangleSides(int* triangleSides) {
 	return triangleSides;
 }
 
-//This function defines a valid triangle using the triangle inequality theorem
+/*Function to define a valid triangle using the triangle inequality theorem*/
 bool validTriangle(int side1, int side2, int side3) {
 	
 	if ((side1 + side2 > side3) && (side1 + side3 > side2) && (side2 + side3 > side1))
@@ -37,9 +36,9 @@ bool validTriangle(int side1, int side2, int side3) {
 	return false;
 }
 
-//Function to analyze sides from input and determine if it is a triangle
-//if so, determines what type and calculates the angles
-void analyzeTriangle(int side1, int side2, int side3) {
+//Function to analyze sides from input and determine if it is a triangle,
+//if so, determines what type and calculates the angles using a separate function
+char* analyzeTriangle(int side1, int side2, int side3) {
 	char* result = "";
 	
 	//added validTriangle function to analyzeTriangle function
@@ -49,7 +48,7 @@ void analyzeTriangle(int side1, int side2, int side3) {
 		printf("\n%s\n", result);
 	}
 	else if (side1 == side2 && side1 == side3) {
-		result= "Equilateral triangle";
+		result = "Equilateral triangle";
 		printf("\n%s\n", result);
 		anglesOfTriangle(side1, side2, side3);
 	}
@@ -66,29 +65,35 @@ void analyzeTriangle(int side1, int side2, int side3) {
 		printf("\n%s\n", result);
 		anglesOfTriangle(side1, side2, side3);
 	}
+
+	return result;
 }
 
 /*Function to calculate the angles of a triangle*/
-void calculateTri_Angles(int side1, int side2, int side3, double* angle1, double* angle2, double* angle3) {
-	*angle1 = acos(((side2*side2) + (side3*side3) - (side1*side1)) / (COSDENOMINATOR * side2 * side3));
-	*angle2 = acos(((side1*side1) + (side3*side3) - (side2*side2)) / (COSDENOMINATOR * side1 * side3));
-	//*angle3 = MAX_TRI_ANGLES - *angle2 - *angle1;
-	*angle3 = acos(((side1*side1) + (side2*side2) - (side3*side3)) / (COSDENOMINATOR * side1 * side2));
+double* calculateTriAngles(int side1, int side2, int side3) {
+	//Dynamically allocate memory for the angles array
+	double* angles = (double*)malloc(MAXSIDES * sizeof(double));
+	if (angles == NULL) {
+		fprintf(stderr, "Memory allocation issues\n");
+		exit(1);
+	}
+
+	//Perform angle calculations
+	angles[0] = acos(((side2 * side2) + (side3 * side3) - (side1 * side1)) / (COSDENOMINATOR * side2 * side3)) * MAX_TRI_ANGLES / PI;
+	angles[1] = acos(((side1 * side1) + (side3 * side3) - (side2 * side2)) / (COSDENOMINATOR * side1 * side3)) * MAX_TRI_ANGLES / PI;
+	angles[2] = acos(((side1 * side1) + (side2 * side2) - (side3 * side3)) / (COSDENOMINATOR * side1 * side2)) * MAX_TRI_ANGLES / PI;
+
+	return angles;
 }
 
-/*Function to convert angles to degrees and print*/
+/*Function to print angles*/
 void anglesOfTriangle(int side1, int side2, int side3) {
-	double angle1 = 0;
-	double angle2 = 0;
-	double angle3 = 0;
 	//Calculate the angles of the triangle
-	calculateTri_Angles(side1, side2, side3, &angle1, &angle2, &angle3);
+	double* angles = calculateTriAngles(side1, side2, side3);
 
-	//Convert angles from radians to degrees
-	angle1 = angle1 * MAX_TRI_ANGLES / PI;
-	angle2 = angle2 * MAX_TRI_ANGLES / PI;
-	angle3 = angle3 * MAX_TRI_ANGLES / PI;
+	// Print result
+	printf("\nThe angles of the triangle are: %.2lf degrees, %.2lf degrees, and %.2lf degrees.\n", angles[0], angles[1], angles[2]);
 
-	//Print result
-	printf("\nThe angles of the triangle are: %.2lf degrees, %.2lf degrees, and %.2lf degrees.\n", angle1, angle2, angle3);
+	//Free the dynamically allocated memory
+	free(angles);
 }

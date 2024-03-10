@@ -8,10 +8,13 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
 #include "rectangleSolver.h"
 #include "triangleSolver.h"
+#include "rectangleTests.h"
+#include "triangleTests.h"
 
-
+/*Menu Functions*/
 void printWelcome();
 int printShapeMenu();
 char getCharInput(char message[]);

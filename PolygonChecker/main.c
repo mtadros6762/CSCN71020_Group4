@@ -1,5 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS
-#define MAXCHAR 5
+#define MAXCHAR 3
 
 #include <stdio.h>
 #include <stdbool.h>
@@ -11,11 +11,11 @@
 int main() {
     bool continueProgram = true;
     while (continueProgram) {
-		char shapeChoice = '\0';
 
 		printWelcome();
 		printShapeMenu();
 
+		char shapeChoice = '\0';
 		shapeChoice = getCharInput("Enter number: ");
 
         switch (shapeChoice)
@@ -26,7 +26,7 @@ int main() {
             int triangleSides[MAXSIDES] = { 0, 0, 0 };
             int* triangleSidesPtr = getTriangleSides(triangleSides);
 			analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
-
+			
             break;
         case '2':
 
@@ -87,13 +87,12 @@ int main() {
 			else
 			{
 				/*Output when FALSE*/
-				printf("Not a Valid Rectangle\n");
+				printf("\nNot a Valid Rectangle\n");
 			}
 			/*Deallocating the memory cause honestly I have no idea but steve said it's a good practice*/
 			free(Coordinates);
-
+			
             break;
-
         case '0':
             continueProgram = false;
             break;
@@ -122,18 +121,7 @@ int printShapeMenu() {
 /*Separate function for menu choice from user*/
 char getCharInput(char message[]) {
 	char menuInput[MAXCHAR];
-	printf("\n%s\n", message);
-	fgets(menuInput, MAXCHAR, stdin);
+	printf("%s\n", message);
+	scanf("%s", menuInput);
 	return menuInput[0];
 }
-
-//I rewrote the input function in triangleSolver.c
-
-//int* getTriangleSides(int* triangleSides) {
-//    printf("Enter the three sides of the triangle: ");
-//    for (int index = 0; index < TRIANGLEMAX; index++)
-//    {
-//		scanf("%d", &triangleSides[index]);
-//    }
-//    return triangleSides;
-//}

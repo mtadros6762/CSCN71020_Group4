@@ -150,6 +150,7 @@
     <ClInclude Include="rectangleSolver.h" />
     <ClInclude Include="rectangleTests.h" />
     <ClInclude Include="triangleSolver.h" />
+    <ClInclude Include="triangleTests.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
