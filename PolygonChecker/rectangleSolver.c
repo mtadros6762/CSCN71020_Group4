@@ -5,23 +5,19 @@
 
 /*Function to get the input for Coordinates*/
 POINTS* getRectanglePoints(POINTS* coordinates) {
-    printf("Enter the 4 points of the rectangle (x y): \n");
+    printf("Enter the 4 points of the rectangle (x, y):\n");
     for (int i = 0; i < MAX_POINTS; i++) {
-        bool validInput = false;
-        while (!validInput) {
+        while (true) {
             printf("Enter coordinates for point %d: ", i + 1);
             char input[100];
-            if (fgets(input, sizeof(input), stdin) != NULL) {
-                if (sscanf(input, "%d %d", &coordinates[i].x, &coordinates[i].y) == 2) {
-                    validInput = true;
-                }
-                else {
-                    printf("Invalid input. Please enter two integers separated by a space.\n");
-                }
-            }
-            else {
+            if (fgets(input, sizeof(input), stdin) == NULL) {
                 printf("Error reading input. Please try again.\n");
+                continue;
             }
+            if (sscanf(input, "%d %d", &coordinates[i].x, &coordinates[i].y) == 2) {
+                break;
+            }
+            printf("Invalid input. Please enter two integers separated by a space.\n");
         }
     }
     return coordinates;
