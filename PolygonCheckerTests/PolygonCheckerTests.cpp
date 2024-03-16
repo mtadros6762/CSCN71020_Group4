@@ -38,26 +38,21 @@ namespace PolygonCheckerTests
 	};
     
 
-    //Rectangle Solver Test Class
+    /*Rectangle Solver Test Class*/
     TEST_CLASS(RectangleSolverTests)
     {
     public:
 
-       
-        TEST_METHOD(TestGetRectanglePoints)
+        /* Testing for a zero-area rectangle where all points are the same*/
+        TEST_METHOD(TestGetRectanglePoints_ZeroAreaRectangle)
         {
-            POINTS testCoordinates[MAX_POINTS];
-            POINTS expectedCoordinates[MAX_POINTS] = { {1, 2}, {3, 4}, {5, 6}, {7, 8} };
+            POINTS testCoordinates[MAX_POINTS] = { {1, 1}, {1, 1}, {1, 1}, {1, 1} };
+            POINTS expectedCoordinates[MAX_POINTS] = { {1, 1}, {1, 1}, {1, 1}, {1, 1} };
 
-            
-            for (int i = 0; i < MAX_POINTS; i++) {
-                testCoordinates[i] = expectedCoordinates[i];
-            }
-
-            
+            /* Calling the function under test*/
             POINTS* result = getRectanglePoints(testCoordinates);
 
-            
+            /*Checking if the result matches the expected coordinates*/
             bool pass = true;
             for (int i = 0; i < MAX_POINTS; i++) {
                 if (!(result[i].x == expectedCoordinates[i].x && result[i].y == expectedCoordinates[i].y)) {
@@ -66,13 +61,60 @@ namespace PolygonCheckerTests
                 }
             }
 
-            
+            /* Assert pass when result=coordinates*/
             Assert::IsTrue(pass);
         }
 
+        /* Testing for a horizontal line rectangle*/
+        TEST_METHOD(TestGetRectanglePoints_HorizontalLine)
+        {
+            POINTS testCoordinates[MAX_POINTS] = { {1, 1}, {2, 1}, {3, 1}, {4, 1} };
+            POINTS expectedCoordinates[MAX_POINTS] = { {1, 1}, {2, 1}, {3, 1}, {4, 1} };
+
+            /* Calling the function for testing*/
+            POINTS* result = getRectanglePoints(testCoordinates);
+
+            /* Checking if result == expected coordinates*/
+            bool pass = true;
+            for (int i = 0; i < MAX_POINTS; i++) {
+                if (!(result[i].x == expectedCoordinates[i].x && result[i].y == expectedCoordinates[i].y)) {
+                    pass = false;
+                    break;
+                }
+            }
+
+            /* Assert pass when result=coordinates*/
+            Assert::IsTrue(pass);
+        }
+
+        /* Testing for a vertical line rectangle*/
+        TEST_METHOD(TestGetRectanglePoints_VerticalLine)
+        {
+            POINTS testCoordinates[MAX_POINTS] = { {1, 1}, {1, 2}, {1, 3}, {1, 4} };
+            POINTS expectedCoordinates[MAX_POINTS] = { {1, 1}, {1, 2}, {1, 3}, {1, 4} };
+
+            /* Calling the function being tested*/
+            POINTS* result = getRectanglePoints(testCoordinates);
+
+            /* Checking if coordinates==result*/
+            bool pass = true;
+            for (int i = 0; i < MAX_POINTS; i++) {
+                if (!(result[i].x == expectedCoordinates[i].x && result[i].y == expectedCoordinates[i].y)) {
+                    pass = false;
+                    break;
+                }
+            }
+
+            /* test passes when result and coordinates are equal*/
+            Assert::IsTrue(pass);
+        }
+
+       
 
 
-        // Test method for calculateDistance function
+
+
+        /* Test method for calculateDistance function*/
         TEST_METHOD(TestCalculateDistance)
         {
             // Test case 1: Test with positive coordinates
