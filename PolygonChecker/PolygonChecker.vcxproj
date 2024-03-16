@@ -139,16 +139,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="inputValidation.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="rectangleSolver.c" />
+    <ClCompile Include="rectangleSolver_tests.c" />
     <ClCompile Include="triangleSolver.c" />
+    <ClCompile Include="trianglesolver_tests.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="inputValidation.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="rectangleSolver.h" />
+    <ClInclude Include="rectangleTests.h" />
     <ClInclude Include="triangleSolver.h" />
+    <ClInclude Include="triangleTests.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

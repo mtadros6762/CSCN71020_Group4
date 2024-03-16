@@ -27,9 +27,9 @@ typedef struct points{
 }POINTS;
 
 /*Functions Used*/
-POINTS* getRectanglePoints(POINTS* coordinates);
-float calculateAngle(POINTS p1, POINTS p2);
-float calculateSlope(POINTS p1, POINTS p2);
-int calculateDistance(POINTS p1, POINTS p2);
+extern "C" POINTS * getRectanglePoints(POINTS * coordinates);
+extern "C" float calculateAngle(POINTS p1, POINTS p2);
+extern "C" float calculateSlope(POINTS p1, POINTS p2);
+extern "C" int calculateDistance(POINTS p1, POINTS p2);
 
 #endif //RECTANGLE_SOLVER_LIBRARY_H
