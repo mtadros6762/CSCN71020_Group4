@@ -1,10 +1,11 @@
 #include "pch.h"
 #include "CppUnitTest.h"
-
+#include"..\PolygonChecker\main.h"
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace PolygonCheckerTests
 {
+    
 
 	//Triangle Solver Test Class
 	TEST_CLASS(TypeOfTriangleTests)
@@ -41,6 +42,7 @@ namespace PolygonCheckerTests
     TEST_CLASS(RectangleSolverTests)
     {
     public:
+
 
         // Test method for calculateDistance function
         TEST_METHOD(TestCalculateDistance)
