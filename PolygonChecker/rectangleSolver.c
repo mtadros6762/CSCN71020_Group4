@@ -6,6 +6,8 @@
 /*Function to get the input for Coordinates*/
 POINTS* getRectanglePoints(POINTS* coordinates) {
     printf("Enter the 4 points of the rectangle (x, y):\n");
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF); // flushing input buffer before entering loop
     for (int i = 0; i < MAX_POINTS; i++) {
         while (true) {
             printf("Enter coordinates for point %d: ", i + 1);
