@@ -8,5 +8,10 @@
 #define PCH_H
 
 // add headers that you want to pre-compile here
+#include "main.h"
+#include "rectangleSolver.h"
+#include "rectangleTests.h"
+#include "triangleSolver.h"
+#include "triangleTests.h"
 
 #endif //PCH_H

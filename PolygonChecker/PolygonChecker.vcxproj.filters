@@ -21,10 +21,13 @@
     <ClCompile Include="triangleSolver.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="inputValidation.c">
+    <ClCompile Include="rectangleSolver.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="rectangleSolver.c">
+    <ClCompile Include="rectangleSolver_tests.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="trianglesolver_tests.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,10 +38,13 @@
     <ClInclude Include="main.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inputValidation.h">
+    <ClInclude Include="rectangleSolver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="rectangleSolver.h">
+    <ClInclude Include="rectangleTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="triangleTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

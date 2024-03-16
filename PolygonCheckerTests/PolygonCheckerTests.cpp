@@ -8,7 +8,7 @@ namespace PolygonCheckerTests
     
 
 	//Triangle Solver Test Class
-	TEST_CLASS(TriangleSolverTests)
+	TEST_CLASS(TypeOfTriangleTests)
 	{
 	public:
 
@@ -17,8 +17,8 @@ namespace PolygonCheckerTests
 		}
 	};
 
-	//Rectangle Solver Test Class
-	TEST_CLASS(RectangleSolverTests)
+	
+	TEST_CLASS(TriangleAnglesTests)
 	{
 	public:
 
@@ -28,7 +28,7 @@ namespace PolygonCheckerTests
 	};
 
 	//Input Validation Test Class
-	TEST_CLASS(InputValidationTests)
+	TEST_CLASS(RectangleFourPointsTests)
 	{
 	public:
 
@@ -43,18 +43,6 @@ namespace PolygonCheckerTests
     {
     public:
        
-        TEST_METHOD(TestGetRectanglePoints)
-        {
-            Points testCoordinates[MAX_POINTS];
-            Points expectedCoordinates[MAX_POINTS] = { {1, 2}, {3, 4}, {5, 6}, {7, 8} }; 
-
-            
-            for (int i = 0; i < MAX_POINTS; i++) {
-                testCoordinates[i] = expectedCoordinates[i];
-            }
-
-            
-            Points* result = getRectanglePoints(testCoordinates);
 
             
             bool pass = true;
