@@ -36,27 +36,42 @@ namespace PolygonCheckerTests
 		{
 		}
 	};
-
+    
 
     //Rectangle Solver Test Class
     TEST_CLASS(RectangleSolverTests)
     {
     public:
+       
+
+            
+            bool pass = true;
+            for (int i = 0; i < MAX_POINTS; i++) {
+                if (!(result[i].x == expectedCoordinates[i].x && result[i].y == expectedCoordinates[i].y)) {
+                    pass = false;
+                    break;
+                }
+            }
+
+            
+            Assert::IsTrue(pass);
+        }
+
 
 
         // Test method for calculateDistance function
         TEST_METHOD(TestCalculateDistance)
         {
             // Test case 1: Test with positive coordinates
-            POINTS p1 = { 0, 0 };
-            POINTS p2 = { 3, 4 };
+            Points p1 = { 0, 0 };
+            Points p2 = { 3, 4 };
             int expected = 5;
             int result = calculateDistance(p1, p2);
             Assert::AreEqual(expected, result);
 
             // Test case 2: Test with negative coordinates
-            POINTS p3 = { -1, -1 };
-            POINTS p4 = { -4, -5 };
+            Points p3 = { -1, -1 };
+            Points p4 = { -4, -5 };
             int expectedNegative = 5;
             int resultNegative = calculateDistance(p3, p4);
             Assert::AreEqual(expectedNegative, resultNegative);
@@ -66,15 +81,15 @@ namespace PolygonCheckerTests
         TEST_METHOD(TestCalculateSlope)
         {
             // Test case 1: Test with positive slope
-            POINTS p1 = { 1, 1 };
-            POINTS p2 = { 4, 5 };
+            Points p1 = { 1, 1 };
+            Points p2 = { 4, 5 };
             float expected = 1.3333;
             float result = calculateSlope(p1, p2);
             Assert::IsTrue(fabs(result - expected) < 0.0001);
 
             // Test case 2: Test with vertical line (undefined slope)
-            POINTS p3 = { 2, 2 };
-            POINTS p4 = { 2, 5 };
+            Points p3 = { 2, 2 };
+            Points p4 = { 2, 5 };
             float expectedVertical = INFINITY;
             float resultVertical = calculateSlope(p3, p4);
             Assert::IsTrue(isinf(resultVertical));
@@ -82,7 +97,7 @@ namespace PolygonCheckerTests
 
         TEST_METHOD(TestCalculateAngle)
         {
-            POINTS p1, p2;
+            Points p1, p2;
             float expected, result;
 
             // Test with a 45-degree angle
