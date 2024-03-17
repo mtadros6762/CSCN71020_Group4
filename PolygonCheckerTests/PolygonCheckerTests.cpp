@@ -1,63 +1,166 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 #include"..\PolygonChecker\rectangleSolver.h"
+#include "..\PolygonChecker\triangleSolver.h"
+
+//extern "C" bool validTriangle(int side1, int side2, int side3);
+//extern "C" char* analyzeTriangle(int side1, int side2, int side3);
+//extern "C" double* calculateTriAngles(int side1, int side2, int side3);
+
+//group4 - cscn71020 - tests
+
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace PolygonCheckerTests
 {
-    
 
-	//Triangle Solver Test Class
+	/*Triangle Solver Test Class - Types of Triangle*/
 	TEST_CLASS(TypeOfTriangleTests)
 	{
 	public:
 
-		TEST_METHOD(TestMethod1)
+		TEST_METHOD(Test_validTriangle_invalid)
 		{
-           
+            /*Arrange*/
+            int side1 = 1;
+            int side2 = 2;
+            int side3 = 3;
+            bool expected = false;  //function returns false when the triangle is invalid
+            /*Act*/
+            bool actual = validTriangle(side1, side2, side3);
+            /*Assert*/
+            Assert::AreSame(actual, expected);
 		}
+
+        TEST_METHOD(Test_validTriangle_valid) 
+        {
+            /*Arrange*/
+            int side1 = 6;
+            int side2 = 6;
+            int side3 = 4;
+            bool expected = true;  //function returns true when the triangle is valid
+            /*Act*/
+            bool actual = validTriangle(side1, side2, side3);
+            /*Assert*/
+            Assert::AreSame(actual, expected);
+        }
+
+        TEST_METHOD(Test_analyzeTriangles_NotATriangle)
+        {
+            /*Arrange*/
+            int side1 = 1;
+            int side2 = 2;
+            int side3 = 3;
+            char* expected = "Not a triangle";
+            /*Act*/
+            char* actual = analyzeTriangle(side1, side2, side3);
+            /*Assert*/
+            Assert::AreSame(actual, expected);
+        }
+
+        TEST_METHOD(Test_analyzeTriangles_Equilateral)
+        {
+            /*Arrange*/
+            int side1 = 3;
+            int side2 = 3;
+            int side3 = 3;
+            char* expected = "Equilateral triangle";
+            /*Act*/
+            char* actual = analyzeTriangle(side1, side2, side3);
+            /*Assert*/
+            Assert::AreSame(actual, expected);
+        }
+
+        TEST_METHOD(Test_analyzeTriangles_Isosceles)
+        {
+            /*Arrange*/
+            int side1 = 5;
+            int side2 = 5;
+            int side3 = 7;
+            char* expected = "Isosceles triangle";
+            /*Act*/
+            char* actual = analyzeTriangle(side1, side2, side3);
+            /*Assert*/
+            Assert::AreSame(actual, expected);
+        }
+
+        TEST_METHOD(Test_analyzeTriangles_Scalene)
+        {
+            /*Arrange*/
+            int side1 = 5;
+            int side2 = 4;
+            int side3 = 3;
+            char* expected = "Scalene triangle";
+            /*Act*/
+            char* actual = analyzeTriangle(side1, side2, side3);
+            /*Assert*/
+            Assert::AreSame(actual, expected);
+        }
 	};
 
-	
+
+	/*Triangle Solver Test Class - Calculate Angles*/
 	TEST_CLASS(TriangleAnglesTests)
 	{
 	public:
 
-		TEST_METHOD(TestMethod1)
-		{
-            //test case 1 
+        TEST_METHOD(Test_calculateTriAngles_equilateral)
+        {
+            //This function tests calculateTriAngles functionality  
             int side1 = 2;
             int side2 = 2;
             int side3 = 2;
-            double expected[MAXSIZES] = { 60.00,60.00,60.00 }
+            double expected[] = { 60.00, 60.00, 60.00 };
             double* actual = calculateTriAngles(side1, side2, side3);
-            Assert::AreEqual(expected, actual);
 
-            //test case 2
+            //Compare each angle individually using a for loop
+            for (int i = 0; i < MAXSIDES; i++)
+            {
+                //comparing with a tolerance of 0.01 for accuracy
+                Assert::AreEqual(expected[i], actual[i], 0.01);
+            }
+            /*Assert::AreEqual(expected[1], actual[1], 0.01);
+            Assert::AreEqual(expected[2], actual[2], 0.01);*/
+        }
+
+        TEST_METHOD(Test_calculateTriAngles_scalene)
+        {
+            //This function tests calculateTriAngles functionality with
+            //a valid scalene triangle as input
             int side1 = 3;
             int side2 = 4;
             int side3 = 5;
-            double expected[MAXSIZES] = { 36.87,53.13,90.00 }
+            double expected[] = { 36.87, 53.13, 90.00 };
             double* actual = calculateTriAngles(side1, side2, side3);
-            Assert::AreEqual(expected, actual);
 
-            //test case 3
+            //Compare each angle individually
+            for (int i = 0; i < MAXSIDES; i++)
+            {
+                //comparing with a tolerance of 0.01 for accuracy
+                Assert::AreEqual(expected[i], actual[i], 0.01);
+            }
+           /* Assert::AreEqual(expected[1], actual[1], 0.01);
+            Assert::AreEqual(expected[2], actual[2], 0.01);*/
+        }
+
+        TEST_METHOD(Test_calculateTriAngles_isosceles)
+        {
+            //This function tests calculateTriAngles functionality with
+            //a valid isosceles triangle as input
             int side1 = 6;
             int side2 = 6;
             int side3 = 5;
-            double expected[MAXSIZES] = { 65.38,65.38,49.25 };
+            double expected[] = { 65.38, 65.38, 49.25 };
             double* actual = calculateTriAngles(side1, side2, side3);
-            Assert::AreEqual(expected, actual);
-		}
-	};
 
-	//Input Validation Test Class
-	TEST_CLASS(RectangleFourPointsTests)
-	{
-	public:
-
-		TEST_METHOD(TestMethod1)
-		{
+            //Compare each angle individually
+            for(int i = 0; i < MAXSIDES; i++)
+            {
+                //comparing with a tolerance of 0.01 for accuracy
+                Assert::AreEqual(expected[i], actual[i], 0.01);
+            }
+            /*Assert::AreEqual(expected[1], actual[1], 0.01);
+            Assert::AreEqual(expected[2], actual[2], 0.01); */
 		}
 	};
     
@@ -132,11 +235,6 @@ namespace PolygonCheckerTests
             /* test passes when result and coordinates are equal*/
             Assert::IsTrue(pass);
         }
-
-       
-
-
-
 
         /* Test method for calculateDistance function*/
         TEST_METHOD(TestCalculateDistance)

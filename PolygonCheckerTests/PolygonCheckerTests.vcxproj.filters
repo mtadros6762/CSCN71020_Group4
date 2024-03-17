@@ -35,10 +35,10 @@
     <ClInclude Include="rectangleTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="triangleSolver.h">
+    <ClInclude Include="triangleTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="triangleTests.h">
+    <ClInclude Include="..\PolygonChecker\triangleSolver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
