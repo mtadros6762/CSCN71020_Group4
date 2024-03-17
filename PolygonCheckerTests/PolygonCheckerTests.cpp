@@ -14,6 +14,7 @@ namespace PolygonCheckerTests
 
 		TEST_METHOD(TestMethod1)
 		{
+           
 		}
 	};
 
@@ -24,6 +25,29 @@ namespace PolygonCheckerTests
 
 		TEST_METHOD(TestMethod1)
 		{
+            //test case 1 
+            int side1 = 2;
+            int side2 = 2;
+            int side3 = 2;
+            double expected[MAXSIZES] = { 60.00,60.00,60.00 }
+            double* actual = calculateTriAngles(side1, side2, side3);
+            Assert::AreEqual(expected, actual);
+
+            //test case 2
+            int side1 = 3;
+            int side2 = 4;
+            int side3 = 5;
+            double expected[MAXSIZES] = { 36.87,53.13,90.00 }
+            double* actual = calculateTriAngles(side1, side2, side3);
+            Assert::AreEqual(expected, actual);
+
+            //test case 3
+            int side1 = 6;
+            int side2 = 6;
+            int side3 = 5;
+            double expected[MAXSIZES] = { 65.38,65.38,49.25 };
+            double* actual = calculateTriAngles(side1, side2, side3);
+            Assert::AreEqual(expected, actual);
 		}
 	};
 
