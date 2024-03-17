@@ -166,11 +166,11 @@
     <ClCompile Include="PolygonCheckerTests.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\PolygonChecker\triangleSolver.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="rectangleSolver.h" />
     <ClInclude Include="rectangleTests.h" />
+    <ClInclude Include="triangleSolver.h" />
     <ClInclude Include="triangleTests.h" />
   </ItemGroup>
   <ItemGroup>

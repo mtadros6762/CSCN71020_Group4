@@ -1,5 +1,7 @@
 #include "pch.h"
 #include "CppUnitTest.h"
+#include "rectangleSolver.h"
+#include "triangleSolver.h"
 #include"..\PolygonChecker\rectangleSolver.h"
 #include "..\PolygonChecker\triangleSolver.h"
 
@@ -29,7 +31,7 @@ namespace PolygonCheckerTests
             /*Act*/
             bool actual = validTriangle(side1, side2, side3);
             /*Assert*/
-            Assert::AreSame(actual, expected);
+            Assert::AreEqual(actual, expected);
 		}
 
         TEST_METHOD(Test_validTriangle_valid) 
@@ -42,7 +44,7 @@ namespace PolygonCheckerTests
             /*Act*/
             bool actual = validTriangle(side1, side2, side3);
             /*Assert*/
-            Assert::AreSame(actual, expected);
+            Assert::AreEqual(actual, expected);
         }
 
         TEST_METHOD(Test_analyzeTriangles_NotATriangle)
@@ -55,7 +57,7 @@ namespace PolygonCheckerTests
             /*Act*/
             char* actual = analyzeTriangle(side1, side2, side3);
             /*Assert*/
-            Assert::AreSame(actual, expected);
+            Assert::IsTrue(strcmp(actual, expected) == 0);
         }
 
         TEST_METHOD(Test_analyzeTriangles_Equilateral)
@@ -68,7 +70,7 @@ namespace PolygonCheckerTests
             /*Act*/
             char* actual = analyzeTriangle(side1, side2, side3);
             /*Assert*/
-            Assert::AreSame(actual, expected);
+            Assert::IsTrue(strcmp(actual, expected) == 0);
         }
 
         TEST_METHOD(Test_analyzeTriangles_Isosceles)
@@ -81,7 +83,7 @@ namespace PolygonCheckerTests
             /*Act*/
             char* actual = analyzeTriangle(side1, side2, side3);
             /*Assert*/
-            Assert::AreSame(actual, expected);
+            Assert::IsTrue(strcmp(actual, expected) == 0);
         }
 
         TEST_METHOD(Test_analyzeTriangles_Scalene)
@@ -94,7 +96,7 @@ namespace PolygonCheckerTests
             /*Act*/
             char* actual = analyzeTriangle(side1, side2, side3);
             /*Assert*/
-            Assert::AreSame(actual, expected);
+            Assert::IsTrue(strcmp(actual, expected) == 0);
         }
 	};
 
