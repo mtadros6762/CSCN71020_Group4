@@ -46,4 +46,43 @@ float calculateAngle(POINTS p1, POINTS p2) {
     return atan2(p2.y - p1.y, p2.x - p1.x) * STRAIGHT_ANGLE / M_PI;
 }
 
-   
+#include <stdbool.h>
+#include "rectangleSolver.h"
+
+ bool isRectangle(POINTS* Coordinates) {
+    /*Finding the distance between each point using the distance formula (A to B , B to C. etc)  */
+    int Dist_AB = calculateDistance(Coordinates[0], Coordinates[1]);
+    int Dist_BC = calculateDistance(Coordinates[1], Coordinates[2]);
+    int Dist_CD = calculateDistance(Coordinates[2], Coordinates[3]);
+    int Dist_DA = calculateDistance(Coordinates[3], Coordinates[0]);
+
+    /*Finding the slopes of the diagonals*/
+    float Slope_AC = calculateSlope(Coordinates[0], Coordinates[2]);
+    float Slope_BD = calculateSlope(Coordinates[1], Coordinates[3]);
+
+    /*Finding the angles of each point*/
+    float angleAB = calculateAngle(Coordinates[0], Coordinates[1]);
+    float angleBC = calculateAngle(Coordinates[1], Coordinates[2]);
+    float angleCD = calculateAngle(Coordinates[2], Coordinates[3]);
+    float angleDA = calculateAngle(Coordinates[3], Coordinates[0]);
+
+    /*Approximating so that all the angles are in between 0 and 360 . This just makes it easier to compare the angles*/
+    if (angleAB < MIN_VALUE) angleAB += MAX_ANGLE;
+    if (angleBC < MIN_VALUE) angleBC += MAX_ANGLE;
+    if (angleCD < MIN_VALUE) angleCD += MAX_ANGLE;
+    if (angleDA < MIN_VALUE) angleDA += MAX_ANGLE;
+
+    /*Comparison of all 3 points for the validity of the rectangle*/
+    if (((Slope_AC + Slope_BD) == SLOPE_SUM) && (Dist_AB == Dist_CD) &&
+        ((int)angleAB % RIGHT_ANGLE == MIN_VALUE) && ((int)angleBC % RIGHT_ANGLE == MIN_VALUE) &&
+        ((int)angleCD % RIGHT_ANGLE == MIN_VALUE) && ((int)angleDA % RIGHT_ANGLE == MIN_VALUE)) {
+        return true; // All conditions met, it's a rectangle
+    }
+    else {
+        return false; // Not a rectangle
+    }
+}
+
+
+
+
