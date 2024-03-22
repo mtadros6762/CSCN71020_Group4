@@ -31,5 +31,5 @@ POINTS* getRectanglePoints(POINTS* coordinates);
 float calculateAngle(POINTS p1, POINTS p2);
 float calculateSlope(POINTS p1, POINTS p2);
 int calculateDistance(POINTS p1, POINTS p2);
-
+ bool isRectangle(POINTS* Coordinates);
 #endif //RECTANGLE_SOLVER_LIBRARY_H

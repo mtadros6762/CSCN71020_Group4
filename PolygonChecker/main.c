@@ -72,9 +72,7 @@ int main() {
 			if (angleDA < MIN_VALUE) angleDA += MAX_ANGLE;
 
 			/*Comparison of all 3 points for the validity of the rectangle*/
-			if (((Slope_AC + Slope_BD) == SLOPE_SUM) && (Dist_AB == Dist_CD) &&
-				((int)angleAB % RIGHT_ANGLE == MIN_VALUE) && ((int)angleBC % RIGHT_ANGLE == MIN_VALUE) &&
-				((int)angleCD % RIGHT_ANGLE == MIN_VALUE) && ((int)angleDA % RIGHT_ANGLE == MIN_VALUE)) {
+			if (isRectangle(Coordinates)) {
 
 				/*Output when all are TRUE*/
 				printf("\nIt's a Valid Rectangle\n");

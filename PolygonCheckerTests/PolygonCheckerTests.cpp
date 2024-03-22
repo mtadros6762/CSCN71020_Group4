@@ -4,6 +4,8 @@
 #include "triangleSolver.h"
 #include"..\PolygonChecker\rectangleSolver.h"
 #include "..\PolygonChecker\triangleSolver.h"
+extern "C" bool isRectangle(POINTS * Coordinates);
+
 
 //extern "C" bool validTriangle(int side1, int side2, int side3);
 //extern "C" char* analyzeTriangle(int side1, int side2, int side3);
@@ -171,6 +173,33 @@ namespace PolygonCheckerTests
     TEST_CLASS(RectangleSolverTests)
     {
     public:
+
+        TEST_METHOD(TestIsRectangle_Valid)
+        {
+            
+            POINTS rectangleCoordinates[MAX_POINTS] = { {0, 0}, {0, 2}, {3, 2}, {3, 0} };
+            bool expected = true;
+
+            
+            bool actual = (rectangleCoordinates);
+
+            
+            Assert::AreEqual(expected, actual);
+        }
+
+        TEST_METHOD(TestIsRectangle_Invalid)
+        {
+            
+            POINTS invalidRectangleCoordinates[MAX_POINTS] = { {1, 5}, {0, 1}, {1, 4}, {9, 0} };
+            bool expected = false;
+
+            
+            bool actual = isRectangle(invalidRectangleCoordinates);
+
+            
+            Assert::AreEqual(expected, actual);
+        }
+
 
         /* Testing for a zero-area rectangle where all points are the same*/
         TEST_METHOD(TestGetRectanglePoints_ZeroAreaRectangle)

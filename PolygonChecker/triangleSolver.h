@@ -23,5 +23,5 @@ bool validTriangle(int side1, int side2, int side3);
 char* analyzeTriangle(int side1, int side2, int side3);
 double* calculateTriAngles(int side1, int side2, int side3);
 void anglesOfTriangle(int side1, int side2, int side3);
-
+bool isRectangle(POINTS* Coordinates);
 #endif //TRIANGLE_SOLVER_H
