@@ -181,7 +181,7 @@ namespace PolygonCheckerTests
             bool expected = true;
 
             
-            bool actual = (rectangleCoordinates);
+            bool actual = isRectangle(rectangleCoordinates);
 
             
             Assert::AreEqual(expected, actual);
